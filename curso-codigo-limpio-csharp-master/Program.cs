@@ -28,7 +28,7 @@ namespace ToDo
             } while ((Menu)menuSelected != Menu.Exit);
         }
         /// <summary>
-        /// Show the main menu 
+        /// Show the options for Task 
         /// </summary>
         /// <returns>Returns option indicated by user</returns>
         public static int ShowMainMenu()
@@ -40,7 +40,6 @@ namespace ToDo
             Console.WriteLine("3. Tareas pendientes");
             Console.WriteLine("4. Salir");
 
-            // Read line
             string line = Console.ReadLine();
             return Convert.ToInt32(line);
         }
@@ -50,13 +49,13 @@ namespace ToDo
             try
             {
                 Console.WriteLine("Ingrese el número de la tarea a remover: ");
-                // Show current taks
                 ShowMenuTaskList();
 
                 Console.WriteLine("----------------------------------------");
 
                 string line = Console.ReadLine();
-                // Remove one position
+
+                // Remove one position because the array starts in 0
                 int indexToRemove = Convert.ToInt32(line) - 1;
 
                 if (indexToRemove > (TaskList.Count - 1) || indexToRemove < 0)
