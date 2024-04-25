@@ -14,18 +14,19 @@ namespace ToDo
             do
             {
                 menuSelected = ShowMainMenu();
-                if ((Menu)menuSelected  == Menu.Add)
+                if ((Menu)menuSelected == Menu.Add)
                 {
                     ShowMenuAdd();
                 }
-                else if (menuSelected == Menu.Remove)
+                else if ((Menu)menuSelected == Menu.Remove)
+                {
                     ShowMenuRemove();
                 }
-                else if (menuSelected == Menu.List)
+                else if ((Menu)menuSelected == Menu.List)
                 {
                     ShowMenuTaskList();
                 }
-            } while ((Menu)menuSelected  != Menu.Exit);
+            } while ((Menu)menuSelected != Menu.Exit);
         }
         /// <summary>
         /// Show the main menu 
@@ -37,6 +38,7 @@ namespace ToDo
             Console.WriteLine("Ingrese la opción a realizar: ");
             Console.WriteLine("1. Nueva tarea");
             Console.WriteLine("2. Remover tarea");
+            Console.WriteLine("3. Tareas pendientes");
             Console.WriteLine("4. Salir");
 
             // Read line
@@ -50,10 +52,8 @@ namespace ToDo
             {
                 Console.WriteLine("Ingrese el número de la tarea a remover: ");
                 // Show current taks
-                for (int i = 0; i < TaskList.Count; i++)
-                {
-                    Console.WriteLine((i + 1) + ". " + TaskList[i]);
-                }
+                ShowMenuTaskList();
+
                 Console.WriteLine("----------------------------------------");
 
                 string line = Console.ReadLine();
@@ -93,7 +93,7 @@ namespace ToDo
             if (TaskList == null || TaskList.Count == 0)
             {
                 Console.WriteLine("No hay tareas por realizar");
-            } 
+            }
             else
             {
                 Console.WriteLine("----------------------------------------");
@@ -105,12 +105,12 @@ namespace ToDo
             }
         }
     }
-
+}
 
 public enum Menu
 {
     Add = 1,
     Remove = 2,
-    List = 3
-,    Exit = 4
+    List = 3,
+    Exit = 4
 }
